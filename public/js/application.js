@@ -1,9 +1,9 @@
 const width = window.innerWidth;
 const height = window.innerHeight;
-const constructor = document.querySelector("#constructor");
+// const constructor = document.querySelector("#constructor");
 const container = document.querySelector("#container");
-const select = document.querySelector("#selectcolor");
-const imgContainer = document.querySelector(".wrapper-img");
+const select = document.querySelector("#selectColor");
+const imgContainer = document.querySelector(".wrapper-images");
 const mainImg = document.querySelector("#mainImg");
 
 const stage = new Konva.Stage({
@@ -75,8 +75,7 @@ constructor.addEventListener("click", (e) => {
     imageObj.onload = function () {
       drawImage(this);
     };
-    imageObj.src =
-      "/assets/tinder-photo-size-tinder-picture-size-tinder-aspect-ratio-image-dimensions-crop.jpg";
+    imageObj.src = "/";
   }
 });
 
@@ -90,7 +89,7 @@ select.addEventListener("change", async (event) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ color }),
+    body: JSON.stringify({ color, collection, modelName }),
   });
 
   const newItem = await response.json();
@@ -105,6 +104,6 @@ imgContainer.addEventListener("click", (e) => {
   }
 });
 
-container.addEventListener("click", (e) => {
-  console.log(e.target);
-});
+// container.addEventListener("click", (e) => {
+//   console.log(e.target);
+// });

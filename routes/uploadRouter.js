@@ -5,16 +5,16 @@ router.get("/", (req, res) => {
   res.render("upload");
 });
 
-
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   if (req.files) {
-    const {image} = req.files
+    const { image } = req.files;
     // const image = req.files.image
-    image.mv(`/Elbrus-Bootcamp/Ivan/phase2/second-week/shoppers/public/downloadImg/${image.name}`, (err) => {
-     return res.render('upload', {image: image.name} )
-    })
-  } else{
-    res.render("upload");
+    image.mv(`downloadImg/${image.name}`, (err) => {
+      // res.locals.img = { image: image.name };
+      // return res.render("index", { image: image.name });
+    });
+  } else {
+    res.render("index");
   }
 });
 

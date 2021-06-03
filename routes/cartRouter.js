@@ -1,8 +1,8 @@
-const Check = require('../models/check');
-const { Router } = require('express');
+const Check = require("../models/check");
+const { Router } = require("express");
 const router = Router();
 
-router.get('/complete-order', async (req, res) => {
+router.get("/complete-order", async (req, res) => {
   // const check = await Check.findOne({}, {}, { sort: { updatedAt: -1 } })
   //   .populate('bagModel')
   //   .populate('bagColor')
@@ -21,8 +21,7 @@ router.get('/complete-order', async (req, res) => {
   // res.render('customer', { check }); // ПОМЕНЯЙ НАЗВАНИЕ, КАК И ИГОРЯ!!!
   //   });
   //   });
-  res.render('customer')
+  res.render("customer");
 });
-
 
 module.exports = router;

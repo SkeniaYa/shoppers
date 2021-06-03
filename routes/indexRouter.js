@@ -28,6 +28,28 @@ router.get("/", async (req, res) => {
   res.render("index", { uniqueSizes, uniqueColors, materialsFromDB });
 });
 
+router.post("/", (req, res) => {
+  if (req.files) {
+    console.log(req.files.image);
+    const { image } = req.files;
+    // const image = req.files.image
+    const path =
+      __dirname.replace("routes", "") + `/public/downloadImg/${image.name}`;
+    image.mv(path, (err) => {
+      // res.locals.img = { image: image.name };
+      return res.render("index", { image: image.name });
+    });
+  } else {
+    res.render("index");
+  }
+});
+
+// router.post("/", async (req, res) => {
+//   // const { color, collection, modelName } = req.body;
+//   console.log(req.body);
+//   // const test = await collection.find({ title: modelName, color });
+//   // console.log(test);
+// });
 // router.get("/help", (req, res) => {
 //   res.render("help");
 // });
