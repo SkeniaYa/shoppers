@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose')
 
-const bagModelSchema = mongoose.Schema({
+const bagModelSchema = new Schema({
   name: String,
   image: String,
   changableHandles: Boolean,

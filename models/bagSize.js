@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose')
 
-const bagSizeSchema = mongoose.Schema({
+const bagSizeSchema = new Schema({
   bagModel: String,
   sizeName: String, //small, medium, big, individualized
   price: Number,

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const checkSchema =  new Schema(
+const checkSchema = new Schema(
   {
     bagModel: {
       type: Schema.Types.ObjectId,
