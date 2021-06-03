@@ -7,12 +7,15 @@ router.get("/", (req, res) => {
 
 
 router.post('/', (req, res) => {
-  const {image} = req.files
-  image.mv(`/Elbrus-Bootcamp/Ivan/phase2/second-week/shoppers/public/downloadImg/${image.name}`, (err) => {
-    res.render('upload', {image: image.name} )
-  })
-  console.log(req.files.image.name); 
-  console.log(__dirname)
+  if (req.files) {
+    const {image} = req.files
+    // const image = req.files.image
+    image.mv(`/Elbrus-Bootcamp/Ivan/phase2/second-week/shoppers/public/downloadImg/${image.name}`, (err) => {
+     return res.render('upload', {image: image.name} )
+    })
+  } else{
+    res.render("upload");
+  }
 });
 
 module.exports = router;

@@ -1,4 +1,4 @@
-asdasdasd<div class="row justify-content-around">
+<div class="row justify-content-around">
   <div class="col-4">
     <img
       src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFnfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
@@ -6,16 +6,18 @@ asdasdasd<div class="row justify-content-around">
     />
   </div>
 
-  <div class="col-4">
-    <h2 class="title-upload">Загрузка изображения</h2>
-    
-    <form method="POST" action="/upload" class="form-params-upload" enctype="multipart/form-data">
-        <input type="file" name="image" class="form-input-params">
-        <input type="submit" value="download img" class="form-input-params">
-    </form>
+  <div class="col-4 block-dowmload-img">
+    <div class="wrapper-form">
+        <h2 class="title-upload">Загрузка изображения</h2>
+        
+        <form method="POST" action="/upload" class="form-params-upload" enctype="multipart/form-data">
+            <input data type="file" name="image" class="form-input-params">
+            <input type="submit" value="download img" class="form-input-params">
+        </form>
+    </div>
     {{#if image}}
         <div class="wrapper-img-domnload">
-            <img src="downloadImg/{{image}}" alt="" class="img-download">
+            <img class="image-download" src="downloadImg/{{image}}" alt="" class="img-download">
         </div>
     {{/if}}
   </div>

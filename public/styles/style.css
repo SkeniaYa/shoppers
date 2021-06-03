@@ -30,4 +30,25 @@ img {
 .form-input-params:not(:last-of-type){
   margin-bottom: 10px;
 }
+
+.title-upload{
+  font-size: 25px;
+}
+
+.block-dowmload-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 300px;
+}
+
+.wrapper-img-domnload{
+  height: 250px;
+}
+
+.image-download{
+  object-fit: cover;
+  height: 100%;
+}
+
 /* upload */
