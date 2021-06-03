@@ -15,7 +15,7 @@ const app = express();
 connect();
 
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "views"));
+// app.set("views", path.join(__dirname, "views"));
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 app.use(fileupload());

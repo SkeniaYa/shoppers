@@ -6,17 +6,18 @@ const BagSize = require("../models/bagSize");
 const Material = require("../models/material");
 
 router.get("/", async (req, res) => {
+  console.log(11111111111);
   const sizesFromDB = await BagSize.find();
   const colorsFromDB = await BagColor.find();
   const materialsFromDB = await Material.find();
-  // console.log("--->>>", sizesFromDB);
+  console.log("--->>>", sizesFromDB);
   const uniqueSizes = [];
   for (let i = 0; i < sizesFromDB.length; i++) {
     if (!uniqueSizes.includes(sizesFromDB[i].sizeName)) {
       uniqueSizes.push(sizesFromDB[i].sizeName);
     }
   }
-  // console.log('unique-->>>', uniqueSizes);
+  console.log("unique-->>>", uniqueSizes);
 
   const uniqueColors = [];
   for (let i = 0; i < colorsFromDB.length; i++) {
@@ -30,13 +31,11 @@ router.get("/", async (req, res) => {
 
 router.post("/", (req, res) => {
   if (req.files) {
-    console.log(req.files.image);
     const { image } = req.files;
-    // const image = req.files.image
+
     const path =
       __dirname.replace("routes", "") + `/public/downloadImg/${image.name}`;
     image.mv(path, (err) => {
-      // res.locals.img = { image: image.name };
       return res.render("index", { image: image.name });
     });
   } else {
