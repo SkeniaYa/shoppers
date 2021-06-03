@@ -28,5 +28,8 @@ router.get("/", async (req, res) => {
   res.render("index", { uniqueSizes, uniqueColors, materialsFromDB });
 });
 
+// router.get("/help", (req, res) => {
+//   res.render("help");
+// });
 
 module.exports = router;

@@ -197,9 +197,9 @@ const materials = [
 ];
 async function seed() {
   connect();
-  // await Promise.all(bagModels.map((bagEl) => BagModel.create(bagEl)));
-  // await Promise.all(bagColors.map((color) => BagColor.create(color)));
-  // await Promise.all(bagSizes.map((size) => BagSize.create(size)));
+  await Promise.all(bagModels.map((bagEl) => BagModel.create(bagEl)));
+  await Promise.all(bagColors.map((color) => BagColor.create(color)));
+  await Promise.all(bagSizes.map((size) => BagSize.create(size)));
   await Promise.all(materials.map((el) => Material.create(el)));
   disconnect();
 }
