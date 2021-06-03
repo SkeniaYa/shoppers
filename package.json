@@ -21,6 +21,7 @@
   "homepage": "https://github.com/SkeniaYa/shoppers#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "hbs": "^4.1.2",
     "mongoose": "^5.12.12"
   },

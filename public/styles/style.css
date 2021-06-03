@@ -21,3 +21,13 @@ img {
   margin-bottom: 15px;
 }
 
+/* upload */
+.form-params-upload{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-params:not(:last-of-type){
+  margin-bottom: 10px;
+}
+/* upload */

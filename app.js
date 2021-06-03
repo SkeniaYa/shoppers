@@ -3,16 +3,22 @@ const path = require("path");
 const morgan = require("morgan");
 const hbs = require("hbs");
 const indexRouter = require("./routes/indexRouter");
+const uploadRouter = require("./routes/uploadRouter");
+const fileupload = require("express-fileupload");
+
 
 const PORT = 3000;
 const app = express();
 
+app.use(fileupload());
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 // подключение routers
-app.get("/", indexRouter);
+app.use("/", indexRouter);
+app.use("/upload", uploadRouter);
+
 
 // подключение routers
 
