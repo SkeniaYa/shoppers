@@ -171,22 +171,26 @@ const bagSizes = [
 
 const materials = [
   {
-    name: 'Кожа',
+    name: "Кожа",
+    description: "нетканый материал",
     price: 4,
     image: "/image-material/Кожа.jpeg",
   },
   {
-    name: 'Латекс',
+    name: "Латекс",
+    description: "блестящий материал",
     price: 5,
     image: "/image-material/Латекс.jpeg",
   },
   {
-    name: 'Хлопок',
+    name: "Хлопок",
+    description: "натуральный материал",
     price: 6,
     image: "/image-material/Хлопок.jpeg",
   },
   {
-    name: 'Бархат',
+    name: "Бархат",
+    description: "мягкий материал",
     price: 7,
     image: "/image-material/Бархат.jpeg",
   },

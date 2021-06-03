@@ -3,10 +3,12 @@ const bagColor = require("../models/bagColor");
 const router = Router();
 const BagColor = require("../models/bagColor");
 const BagSize = require("../models/bagSize");
+const Material = require("../models/material");
 
 router.get("/", async (req, res) => {
   const sizesFromDB = await BagSize.find();
   const colorsFromDB = await BagColor.find();
+  const materialsFromDB = await Material.find();
   // console.log("--->>>", sizesFromDB);
   const uniqueSizes = [];
   for (let i = 0; i < sizesFromDB.length; i++) {
@@ -23,10 +25,8 @@ router.get("/", async (req, res) => {
     }
   }
   console.log("uniqueColors", uniqueColors);
-  res.render("index", { uniqueSizes, uniqueColors });
+  res.render("index", { uniqueSizes, uniqueColors, materialsFromDB });
 });
-
-
 
 // router.get("/help", (req, res) => {
 //   res.render("help");
