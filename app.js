@@ -3,6 +3,7 @@ const path = require("path");
 const morgan = require("morgan");
 const hbs = require("hbs");
 const indexRouter = require("./routes/indexRouter");
+const cartRouter = require('./routes/cartRouter')
 
 const PORT = 3000;
 const app = express();
@@ -13,6 +14,7 @@ hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 // подключение routers
 app.get("/", indexRouter);
+app.use("/cart", cartRouter);
 
 // подключение routers
 
