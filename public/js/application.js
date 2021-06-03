@@ -1,6 +1,7 @@
 const width = window.innerWidth;
 const height = window.innerHeight;
 const constructor = document.querySelector("#constructor");
+const container = document.querySelector("#container");
 const select = document.querySelector("#selectcolor");
 const imgContainer = document.querySelector(".wrapper-img");
 const mainImg = document.querySelector("#mainImg");
@@ -16,10 +17,6 @@ stage.add(layer);
 
 constructor.addEventListener("click", (e) => {
   if (e.target.className === "delete") {
-    // layer.tr1.destroy();
-    // console.log(1111111);
-
-    console.log(layer.find());
   }
   if (e.target.className === "addtext") {
     const text1 = new Konva.Text({
@@ -85,11 +82,11 @@ constructor.addEventListener("click", (e) => {
 
 select.addEventListener("change", async (event) => {
   const color = event.target.value;
-  const collection = BagColor;
+  const collection = "BagColor";
   const modelName = "model 1";
 
   const response = await fetch("/", {
-    method: "PATCH",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -106,4 +103,8 @@ imgContainer.addEventListener("click", (e) => {
     html.src = e.target.src;
     mainImg.appendChild(html);
   }
+});
+
+container.addEventListener("click", (e) => {
+  console.log(e.target);
 });
