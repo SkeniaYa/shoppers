@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 
-const imageSchema = mongoose.Schema({
+const imageSchema = new Schema({
   name: String,
   area: Number,
   colors: [{
@@ -10,4 +10,6 @@ const imageSchema = mongoose.Schema({
   area: Number
 })
 
-module.exports = mongoose.model('Image', imageSchema)
+const image = model('Image', imageSchema);
+
+module.exports = image;

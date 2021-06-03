@@ -1,9 +1,12 @@
-const mongoose = require('mongoose')
+const { Schema, model } = require("mongoose");
 
-const materialSchema = mongoose.Schema({
+const materialSchema = new Schema({
   name: String,
+  description: String,
   price: Number,
-  image: String
-})
+  image: String,
+});
 
-module.exports = mongoose.model('Material', materialSchema)
+const material = model("Material", materialSchema);
+
+module.exports = material;

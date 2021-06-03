@@ -1,0 +1,70 @@
+<div class="row justify-content-around">
+  <div class="col-4">
+    <div class="mainImg" id="mainImg">
+      <img src="/image-bags/Model3-Beige.JPG" alt="" />
+      <div class="forUploading"></div>
+    </div>
+    <div class="totalPrice">
+      <h2>Стоимость:</h2>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <h2>Конструктор</h2>
+    <div class="title">Выберите модель</div>
+    <div class="wrapper-images">
+      <div id="Model1" class="image">
+        <img src="/image-bags/Model1_Beige.JPG" alt="Model1" />
+      </div>
+      <div id="Model2" class="image">
+        <img src="/image-bags/Model2-Beige.JPG" alt="Model2" />
+      </div>
+      <div id="Model3" class="image">
+        <img src="/image-bags/Model3-Beige.JPG" alt="Model3" />
+      </div>
+    </div>
+    <div class="title">Выберите цвет</div>
+    <select name="selectColor" id="selectColor">
+      {{#each uniqueColors}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+      {{! <option value="White">White</option>
+      <option value="Black">Black</option>
+      <option value="Red">Red</option> }}
+    </select>
+    <div class="title">Выберите размер</div>
+    <select name="selectSize" id="selectSize">
+      {{#each uniqueSizes}}
+        <option value="">{{this}}</option>
+      {{/each}}
+    </select>
+    <div class="title">Выберите материал</div>
+    <form action="">
+      {{#each materialsFromDB}}
+
+        <label>
+          <div class="aboutMaterial">
+            <b>{{this.name}}</b>
+            {{this.description}}
+          </div>
+          <input type="radio" />
+        </label>
+
+        {{!-- <label for="material1" class="material__radio">
+          <input
+            type="radio"
+            class="material__target"
+            id="material1"
+            name="material"
+          />
+          <div
+            class="materialr__label"
+            data-title="{{this.name}}"
+            style="background-image: url('{{this.image}}');"
+          ></div>
+        </label> --}}
+
+      {{/each}}
+    </form>
+  </div>
+</div>

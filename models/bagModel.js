@@ -1,10 +1,14 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 
-const bagModelSchema = mongoose.Schema({
+const bagModelSchema = new Schema({
   name: String,
   image: String,
   changableHandles: Boolean,
   changableBottom: Boolean
 })
 
-module.exports = mongoose.model('BagModel', bagModelSchema)
+
+const BagModel = model('BagModel', bagModelSchema);
+
+module.exports = BagModel;
+
