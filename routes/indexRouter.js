@@ -26,6 +26,8 @@ router.get("/", async (req, res) => {
   res.render("index", { uniqueSizes, uniqueColors });
 });
 
+
+
 // router.get("/help", (req, res) => {
 //   res.render("help");
 // });
