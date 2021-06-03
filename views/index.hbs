@@ -48,15 +48,15 @@
       {{/each}}
     </select>
     <div class="title">Выберите материал</div>
-    <form action="">
+    <form class="materials" action="">
       {{#each materialsFromDB}}
-
-        <label>
+        <label for={{this.name}}>
           <div class="aboutMaterial">
-            <b>{{this.name}}</b>
-            {{this.description}}
+            <b>{{this.name}}</b><br>
+           <span>{{this.description}}</span> <br>
+           <img class="imgMaterial" src="/image-material/Бархат.JPG" alt="{{this.name}}" />
           </div>
-          <input type="radio" />
+          <input name="material" id={{this.name}} type="radio" />
         </label>
 
         {{!-- <label for="material1" class="material__radio">
@@ -75,16 +75,16 @@
 
       {{/each}}
     </form>
-    <div class="col-4 block-dowmload-img">
+    <div class="block-dowmload-img">
     <div class="wrapper-form">
-        <h2 class="title-upload">Загрузка изображения</h2>
-        
+        <h2 class="title-upload">Загрузка изображения и текста</h2>        
         <form method="POST" action="/" class="form-params-upload" enctype="multipart/form-data">
             <input data type="file" name="image" class="form-input-params">
-            <input type="submit" value="download img" class="form-input-params">
-        </form>
-    </div>
-    
+            <input type="submit" value="download img" class="form-input-params">                         
+            <input type="submit" value="download text" class="form-input-params">
+        </form>  
+            <a class="btn btn-warning" href="/order">оформить заказ</a>      
+    </div>    
   </div>
 </div>
   </div>
