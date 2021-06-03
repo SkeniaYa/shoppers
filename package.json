@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Shoppers constructor",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
@@ -23,6 +24,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "hbs": "^4.1.2",
+    "konva": "^8.0.2",
     "mongoose": "^5.12.12"
   },
   "devDependencies": {

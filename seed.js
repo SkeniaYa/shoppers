@@ -169,11 +169,38 @@ const bagSizes = [
   },
 ];
 
+const materials = [
+  {
+    name: "Кожа",
+    description: "нетканый материал",
+    price: 4,
+    image: "/image-material/Кожа.jpeg",
+  },
+  {
+    name: "Латекс",
+    description: "блестящий материал",
+    price: 5,
+    image: "/image-material/Латекс.jpeg",
+  },
+  {
+    name: "Хлопок",
+    description: "натуральный материал",
+    price: 6,
+    image: "/image-material/Хлопок.jpeg",
+  },
+  {
+    name: "Бархат",
+    description: "мягкий материал",
+    price: 7,
+    image: "/image-material/Бархат.jpeg",
+  },
+];
 async function seed() {
   connect();
-  await Promise.all(bagModels.map((bagEl) => BagModel.create(bagEl)));
-  await Promise.all(bagColors.map((color) => BagColor.create(color)));
-  await Promise.all(bagSizes.map((size) => BagSize.create(size)));
+  // await Promise.all(bagModels.map((bagEl) => BagModel.create(bagEl)));
+  // await Promise.all(bagColors.map((color) => BagColor.create(color)));
+  // await Promise.all(bagSizes.map((size) => BagSize.create(size)));
+  await Promise.all(materials.map((el) => Material.create(el)));
   disconnect();
 }
 
