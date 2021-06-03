@@ -5,7 +5,7 @@ const imageSchema = mongoose.Schema({
   area: Number,
   colors: [{
     type: Schema.Types.ObjectId,
-    ref: "Color"
+    ref: "BagColor"
   }],
   area: Number
 })

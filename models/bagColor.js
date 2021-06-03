@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const bagColorSchema = mongoose.Schema({
-  title: String,
+  title: String, 
   color: String,
   image: String,
   price: Number
