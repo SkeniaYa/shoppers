@@ -3,16 +3,19 @@ const path = require("path");
 const morgan = require("morgan");
 const hbs = require("hbs");
 const indexRouter = require("./routes/indexRouter");
+const { connect } = require("./db/connect");
 
 const PORT = 3000;
 const app = express();
+
+connect();
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 // подключение routers
-app.get("/", indexRouter);
+app.use("/", indexRouter);
 
 // подключение routers
 
