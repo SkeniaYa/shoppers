@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 
 const materialSchema = mongoose.Schema({
   name: String,
@@ -6,4 +6,7 @@ const materialSchema = mongoose.Schema({
   image: String
 })
 
-module.exports = mongoose.model('Material', materialSchema)
+
+const material = model('Material', materialSchema);
+
+module.exports = material;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 
 const bagModelSchema = mongoose.Schema({
   name: String,
@@ -7,4 +7,8 @@ const bagModelSchema = mongoose.Schema({
   changableBottom: Boolean
 })
 
-module.exports = mongoose.model('BagModel', bagModelSchema)
+
+const BagModel = model('BagModel', bagModelSchema);
+
+module.exports = BagModel;
+

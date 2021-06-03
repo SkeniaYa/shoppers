@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 
 const bagSizeSchema = mongoose.Schema({
   bagModel: String,
@@ -10,4 +10,6 @@ const bagSizeSchema = mongoose.Schema({
   handleSize: Number
 })
 
-module.exports = mongoose.model('BagSize', bagSizeSchema)
+const bagSize = model('BagSize', bagSizeSchema);
+
+module.exports = bagSize;

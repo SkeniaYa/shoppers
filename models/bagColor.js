@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
+const { Schema, model } = require('mongoose');
 
-const bagColorSchema = mongoose.Schema({
+const bagColorSchema = new Schema({
   title: String, 
   color: String,
   image: String,
   price: Number
 })
 
-module.exports = mongoose.model('BagColor', bagColorSchema)
+const bagColor = model('BagColor', bagColorSchema);
+
+module.exports = bagColor;

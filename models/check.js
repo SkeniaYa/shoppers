@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const checkSchema = mongoose.Schema(
+const checkSchema =  new Schema(
   {
     bagModel: {
       type: Schema.Types.ObjectId,
@@ -34,4 +34,7 @@ const checkSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('Check', checkSchema)
+const check = model('Check', checkSchema);
+
+module.exports = check;
+

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const {Schema, model} = require('mongoose')
 
 const textSchema = mongoose.Schema({
   name: String,
@@ -12,4 +12,6 @@ const textSchema = mongoose.Schema({
   area: Number
 })
 
-module.exports = mongoose.model('Text', textSchema)
+const text = model('Text', textSchema);
+
+module.exports = text;
