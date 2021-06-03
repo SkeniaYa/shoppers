@@ -1,8 +1,23 @@
 img {
   display: block;
- 
+  width: 100%;
+}
+.col-4 {
+  padding-top: 50px;
 }
 .container-header {
   display: flex;
   justify-content: space-between;
 }
+.wrapper-images {
+  display: flex;
+  margin: 0 -20px;
+}
+.image {
+  width: 33.3333333%;
+  padding: 0 20px;
+}
+.title {
+  margin-bottom: 15px;
+}
+
