@@ -132,3 +132,8 @@ select {
 .title{
   font-size: 20px;
 }
+
+.totalPrice {
+  font-size: 30px;
+  font-weight: bold;
+}
