@@ -9,6 +9,10 @@ const addTextButton = document.querySelector("#addText");
 const containerAddConva = document.querySelector("#containerAddConva");
 const inputText = document.querySelector("#addTxt");
 
+const totalPrice = document.querySelector(".totalPrice");
+const constructorPart = document.querySelector("#constructorPart");
+const materialForm = document.forms.materials;
+
 const stage = new Konva.Stage({
   container: "container",
   width: width,
@@ -48,6 +52,47 @@ select.addEventListener("change", async (event) => {
   );
 });
 
+constructorPart.addEventListener("change", async (e) => {
+  e.preventDefault();
+  const selectId = e.target.id;
+  const colorOrSize = e.target.value;
+  const modelName = "Model1";
+
+  const response = await fetch("/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ selectId, colorOrSize, modelName }),
+  });
+  const newItem = await response.json();
+
+  totalPrice.innerHTML = "";
+  price += newItem;
+  totalPrice.insertAdjacentHTML("beforeend", `${price}`);
+});
+
+materialForm.addEventListener("click", async (e) => {
+  // e.preventDefault();
+  console.log("fffffff---->>>", e.target.id);
+  const materialId = e.target.id;
+
+  const response = await fetch("/", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ materialId }),
+  });
+
+  const dataFromServer = await response.json();
+  // console.log('dataFromServer-----UUUUU------>>>', dataFromServer);
+  totalPrice.innerHTML = "";
+  price += dataFromServer;
+  totalPrice.insertAdjacentHTML("beforeend", `${price}`);
+  console.log("TOTAAAAAALLLLL---->>>", price);
+});
+
 imgContainer.addEventListener("click", (e) => {
   if (e.target.tagName === "IMG") {
     // console.log(e.target);
@@ -66,6 +111,21 @@ imgContainer.addEventListener("click", (e) => {
   }
 });
 
+materialForm.addEventListener("click", async (e) => {
+  const materialId = e.target.id;
+  const response = await fetch("/", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ materialId }),
+  });
+  const dataFromServer = await response.json();
+  totalPrice.innerHTML = "";
+  price += dataFromServer;
+  totalPrice.insertAdjacentHTML("beforeend", `${price}`);
+});
+
 downloadImgForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -79,7 +139,7 @@ downloadImgForm.addEventListener("submit", async (e) => {
   e.target.image.value = "";
   // downloadImgForm.reset();
   const newItem = await response.json();
-  // console.log(newItem.image);
+
   if (newItem) {
     function drawImage(imageObj) {
       var darthVaderImg = new Konva.Image({
@@ -144,6 +204,7 @@ containerAddConva.addEventListener("click", async (e) => {
   }
   inputText.value = "";
 });
+
 // container.addEventListener("click", (e) => {
 //   console.log(e.target);
 // });
