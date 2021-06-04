@@ -69,12 +69,12 @@
     <div class="block-dowmload-img" id="containerAddConva">
       <div class="wrapper-form">
         <h2 class="title-upload">Загрузка изображения и текста</h2>
-        <form method="POST" class="form-params-upload" enctype="multipart/form-data">
+        <form method="POST" name="downloadImg" class="form-params-upload" enctype="multipart/form-data">
           <input data type="file" name="image" class="form-input-params">
           <input type="submit" value="добавить изображение" class="form-input-params">
-          <input type="text" placeholder="введите текст" class="form-input-params">
-          <input type="submit" value="добавить текст" class="form-input-params">
         </form>
+        <input id="addTxt" type="text" placeholder="введите текст" class="form-input-params">
+        <input id="addText" type="button" value="добавить текст" class="form-input-params addText">
         <a class="btn btn-warning" href="/order">оформить заказ</a>
       </div>
     </div>

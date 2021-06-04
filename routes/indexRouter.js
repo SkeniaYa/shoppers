@@ -30,30 +30,35 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { selectId, colorOrSize, modelName } = req.body;
-  console.log("selectId--->>>", selectId);
-  let foundInBagColor;
-  let foundInBagSize;
-  if (selectId === "selectColor") {
-    foundInBagColor = await BagColor.findOne({
-      title: modelName,
-      color: colorOrSize,
-    });
-    return res.json(foundInBagColor.price);
+  if (req.body.selectId) {
+    console.log(req.body.selectId);
+    const { selectId, colorOrSize, modelName } = req.body;
+    console.log("selectId--->>>", selectId);
+    let foundInBagColor;
+    let foundInBagSize;
+    if (selectId === "selectColor") {
+      foundInBagColor = await BagColor.findOne({
+        title: modelName,
+        color: colorOrSize,
+      });
+      return res.json(foundInBagColor.price);
+    }
+    if (selectId === "selectSize") {
+      foundInBagSize = await BagSize.findOne({ bagModel: modelName });
+      return res.json(foundInBagSize.price);
+    }
   }
-  if (selectId === "selectSize") {
-    foundInBagSize = await BagSize.findOne({ bagModel: modelName });
-    return res.json(foundInBagSize.price);
+
+  if (req.body.color) {
+    console.log(req.body.color);
+    const { color, modelName } = req.body;
+    console.log("modelName", modelName);
+    console.log("color", color);
+    const test = await BagColor.findOne({ color, title: modelName });
+    console.log("test", test);
+    res.json(test);
   }
-  // if (req.body) {
-  //   const { color, modelName } = req.body;
-  //   console.log("modelName", modelName);
-  //   console.log("color", color);
-  //   const test = await BagColor.findOne({ color, title: modelName });
-  //   console.log("test", test);
-  //   res.json(test);
-  // }
-  // console.log(req.files);
+  console.log(req.files);
   console.log(12);
   console.log("req body ====> ", req.files);
   if (req.files) {

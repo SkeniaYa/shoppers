@@ -12,6 +12,8 @@ const inputText = document.querySelector("#addTxt");
 const totalPrice = document.querySelector(".totalPrice");
 const constructorPart = document.querySelector("#constructorPart");
 const materialForm = document.forms.materials;
+let price = 0;
+totalPrice.insertAdjacentHTML("beforeend", `${price}`);
 
 const stage = new Konva.Stage({
   container: "container",
@@ -21,7 +23,7 @@ const stage = new Konva.Stage({
 
 const layer = new Konva.Layer();
 stage.add(layer);
-
+console.log(select);
 select.addEventListener("change", async (event) => {
   const color = event.target.value;
   // const collection = "BagColor";
@@ -131,13 +133,13 @@ downloadImgForm.addEventListener("submit", async (e) => {
 
   const formData = new FormData();
   formData.append("file", e.target.image.files[0]);
-  console.log(e.target.image.files[0]);
+  // console.log(e.target.image.files[0]);
   const response = await fetch("/", {
     method: "POST",
     body: formData,
   });
   e.target.image.value = "";
-  // downloadImgForm.reset();
+
   const newItem = await response.json();
 
   if (newItem) {
@@ -185,7 +187,8 @@ downloadImgForm.addEventListener("submit", async (e) => {
 });
 
 containerAddConva.addEventListener("click", async (e) => {
-  if (e.target.className === "addText") {
+  if (e.target.className === "form-input-params addText") {
+    console.log(e.target.className);
     const text1 = new Konva.Text({
       x: 10,
       y: 70,
