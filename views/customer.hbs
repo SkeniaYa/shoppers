@@ -1,59 +1,58 @@
-<form name="customer" method="POST" action="/cart/complete-order">
-<div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
-      <div class="form_box text-center">
-        <h4>Информация о вашем заказе</h4>
-        <div class="container">
-   <div class="center">
-<br><div id="final-order" class="">
-           {{#if check}}
-           <div><img src={{check.bagModel.image}} style="max-height: 200px;"></div>
-           <div>
-           <ul>
-             <li>Модель: {{check.bagModel.name}}</li>
-             <li>Цвет сумки: {{check.bagColor.name}}</li>
-             <li>Материал: {{check.material.name}}</li>
-             <li>Тираж: {{check.numBags}}</li>
-             <li>Общая стоимость: {{check.price}}</li>
-           </ul>
-           </div>
-           {{/if}}
-            </div><br>
+<form name="customer" method="POST" action="/cart/thankyou">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="form_box text-center">
+          <h4>Информация о вашем заказе</h4>
+          <div class="container">
+            <div class="center">
+              <br>
+              <div id="final-order" class="">
+                {{#if check}}
+                <div><img src={{check.bagModel.image}} style="max-height: 200px;"></div>
+                <div>
+                  <ul>
+                    <li>Модель: {{check.bagModel.name}}</li>
+                    <li>Цвет сумки: {{check.bagColor.name}}</li>
+                    <li>Материал: {{check.material.name}}</li>
+                    <li>Тираж: {{check.numBags}}</li>
+                    <li>Общая стоимость: {{check.price}}</li>
+                  </ul>
+                </div>
+                {{/if}}
+              </div><br>
             </div>
-</div>
-        <div class="row">
-          <div class="input_box col-6">
-            <input name="name" id="name" type="text" class="form-control" placeholder="Имя" required>
-            <label for="">First Name</label>
           </div>
-          <div class="input_box col-6">
-            <input name="lastName" id="lastName" type="text" class="form-control" placeholder="Фамилия" required>
-            <label for="">Last Name</label>
-          </div>
-          <div class="input_box col-12">
-            <input name="email" id="email" type="email" class="form-control" placeholder="Укажите email" required>
-            <label for="">Email</label>
-          </div>
-          <div class="input_box col-12">
-            <input name="phone" id="phone" type="tel" class="form-control" placeholder="Укажите телефон" required>
-            <label for="">Phone</label>
-          </div>
-          <div class="input_box col-12">
-            <input name="adres" id="adres" type="address" class="form-control" placeholder="Укажите адрес" required>
-            <label for="">Address</label>
-          </div>
-          <div class="col-4 offset-4">
-            <a href="/thankyou" class="btn bg-warning">Заказать</a>
- </body>
-</html>
+          <div class="row">
+            <div class="input_box col-6">
+              <input name="name" id="name" type="text" class="form-control" placeholder="Имя" required>
+              <label for="">First Name</label>
+            </div>
+            <div class="input_box col-6">
+              <input name="lastName" id="lastName" type="text" class="form-control" placeholder="Фамилия" required>
+              <label for="">Last Name</label>
+            </div>
+            <div class="input_box col-12">
+              <input name="email" id="email" type="email" class="form-control" placeholder="Укажите email" required>
+              <label for="">Email</label>
+            </div>
+            <div class="input_box col-12">
+              <input name="phone" id="phone" type="tel" class="form-control" placeholder="Укажите телефон" required>
+              <label for="">Phone</label>
+            </div>
+            <div class="input_box col-12">
+              <input name="adres" id="adres" type="address" class="form-control" placeholder="Укажите адрес" required>
+              <label for="">Address</label>
+            </div>
+            <div class="col-4 offset-4">
+              <button class="btn bg-warning">Заказать</button>
 
+            </div>
           </div>
+
         </div>
-        
       </div>
     </div>
   </div>
-</div> 
 
-            </form>
+</form>

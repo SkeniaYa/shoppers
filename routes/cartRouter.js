@@ -1,27 +1,14 @@
 const Check = require("../models/check");
 const { Router } = require("express");
+const mail = require('../mails/mailer')
 const router = Router();
 
-router.get("/complete-order", async (req, res) => {
-  // const check = await Check.findOne({}, {}, { sort: { updatedAt: -1 } })
-  //   .populate('bagModel')
-  //   .populate('bagColor')
-  //   .populate('material')
-  //   .populate('size')
-  //   .populate('text')
-  //   .populate('image')
-  //   .populate({
-  //     path: 'text',
-  //     populate: { path: 'color' },
-  //   })
-  //   .populate({
-  //     path: 'image',
-  //     populate: { path: 'colors' },
-  //   });
-  // res.render('customer', { check }); // ПОМЕНЯЙ НАЗВАНИЕ, КАК И ИГОРЯ!!!
-  //   });
-  //   });
-  res.render("customer");
+router.post("/thankyou", async (req, res) => {
+  const { name, lastName, email, phone, adres } = req.body;
+  // console.log(req.body, "hiii")
+  mail(name, lastName, email, phone, adres).catch(console.error);
+  res.render('done');
+  // res.render("customer");
 });
 
 module.exports = router;

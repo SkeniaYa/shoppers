@@ -7,7 +7,7 @@ const uploadRouter = require("./routes/uploadRouter");
 const fileupload = require("express-fileupload");
 const nodemailer = require('nodemailer')
 
-let testEmailAccount = await nodemailer.createTestAccount()
+// let testEmailAccount = await nodemailer.createTestAccount()
 
 const { connect } = require("./db/connect");
 const cartRouter = require("./routes/cartRouter");
@@ -24,6 +24,7 @@ hbs.registerPartials(path.join(__dirname, "views", "partials"));
 app.use(fileupload());
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 // подключение routers
 app.use("/", indexRouter);
