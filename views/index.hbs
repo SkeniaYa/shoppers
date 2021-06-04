@@ -2,7 +2,16 @@
   <div class="col-4">
     <div class="mainImg" id="mainImg">
       <img src="/image-bags/Model3-Beige.JPG" alt="" />
-      <div class="forUploading"></div>
+      <div class="forUploading">
+        {{#if image}}
+              <div class="wrapper-img-domnload">
+                  <img class="image-download" src="downloadImg/{{image}}" alt="" class="img-download">
+              </div>
+          {{/if}}
+        <div id="container">
+          
+        </div>
+      </div>
     </div>
     <div class="totalPrice">
       <h2>Стоимость:</h2>
@@ -66,5 +75,17 @@
 
       {{/each}}
     </form>
+    <div class="col-4 block-dowmload-img">
+    <div class="wrapper-form">
+        <h2 class="title-upload">Загрузка изображения</h2>
+        
+        <form method="POST" action="/" class="form-params-upload" enctype="multipart/form-data">
+            <input data type="file" name="image" class="form-input-params">
+            <input type="submit" value="download img" class="form-input-params">
+        </form>
+    </div>
+    
+  </div>
+</div>
   </div>
 </div>
