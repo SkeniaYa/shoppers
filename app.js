@@ -5,6 +5,9 @@ const hbs = require("hbs");
 const indexRouter = require("./routes/indexRouter");
 const uploadRouter = require("./routes/uploadRouter");
 const fileupload = require("express-fileupload");
+const nodemailer = require('nodemailer')
+
+let testEmailAccount = await nodemailer.createTestAccount()
 
 const { connect } = require("./db/connect");
 const cartRouter = require('./routes/cartRouter')

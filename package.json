@@ -25,7 +25,8 @@
     "express-fileupload": "^1.2.1",
     "hbs": "^4.1.2",
     "konva": "^8.0.2",
-    "mongoose": "^5.12.12"
+    "mongoose": "^5.12.12",
+    "nodemailer": "^6.6.1"
   },
   "devDependencies": {
     "eslint": "^7.27.0",
