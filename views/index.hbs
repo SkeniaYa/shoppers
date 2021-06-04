@@ -51,7 +51,7 @@
       {{/each}}
     </select>
     <div class="title">Выберите материал</div>
-    <form class="materials" action="">
+    <form name="materials" method="POST" class="materials" action="">
       {{#each materialsFromDB}}
         <label for={{this.name}}>
           <div class="aboutMaterial">

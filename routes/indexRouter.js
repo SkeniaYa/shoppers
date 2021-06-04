@@ -30,25 +30,30 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   console.log("req.body--->>>", req.body);
-  const { color, modelName, selectId, size } = req.body;
+  const { selectId, colorOrSize, modelName } = req.body;
   console.log("selectId--->>>", selectId);
   let foundInBagColor;
   let foundInBagSize;
   if (selectId === "selectColor") {
-    foundInBagColor = await BagColor.findOne({ title: modelName, color });
+    foundInBagColor = await BagColor.findOne({
+      title: modelName,
+      color: colorOrSize,
+    });
+    return res.json(foundInBagColor.price);
   }
   if (selectId === "selectSize") {
     foundInBagSize = await BagSize.findOne({ bagModel: modelName });
+    return res.json(foundInBagSize.price);
   }
   // const data = {
   //   sizePrice: foundInBagSize.price,
   // };
   // console.log(data);
-  console.log("selectId--->>>", selectId);
 
-  console.log("test--->>>", foundInBagSize.price);
+  // console.log("test--->>>", foundInBagSize.price);
   console.log("foundInBagColor--->>>", foundInBagColor);
-  res.json(foundInBagColor);
+  console.log("foundInBagSize--->>>", foundInBagSize);
+  // res.json(foundInBagColor.price);
 
   if (req.files) {
     const { image } = req.files;
@@ -60,6 +65,14 @@ router.post("/", async (req, res) => {
   } else {
     return res.render("index");
   }
+});
+
+router.patch("/", async (req, res) => {
+  console.log("reqBody!!!!!!!!----->>>>>>", req.body);
+  const foundInMaterials = await Material.findOne({
+    name: req.body.materialId,
+  });
+  res.json(foundInMaterials.price);
 });
 
 // router.post("/", async (req, res) => {

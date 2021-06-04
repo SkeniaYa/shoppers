@@ -7,6 +7,8 @@ const imgContainer = document.querySelector(".wrapper-images");
 const mainImg = document.querySelector("#mainImg");
 const totalPrice = document.querySelector(".totalPrice");
 const constructorPart = document.querySelector("#constructorPart");
+const materialForm = document.forms.materials;
+// const materialLabel =
 
 const stage = new Konva.Stage({
   container: "container",
@@ -87,9 +89,10 @@ constructorPart.addEventListener("change", async (e) => {
   // console.log("e.target.id--->>>", e.target.id);
   // console.log("selectSize==>", sizeSelect);
   // console.log("selectSize.value==>", sizeSelect.value);
-
+  e.preventDefault();
   const selectId = e.target.id;
   const colorOrSize = e.target.value;
+
   // const size = sizeSelect.value;
   const modelName = "Model1";
   console.log("e.target--->>>", e.target);
@@ -108,10 +111,37 @@ constructorPart.addEventListener("change", async (e) => {
   console.log("newItem--->>>", newItem);
 
   totalPrice.innerHTML = "";
-  price += newItem.price;
+  price += newItem;
   totalPrice.insertAdjacentHTML("beforeend", `${price}`);
-  // console.log("price--->>>>", price);
+  console.log("priceAfter--->>>>", price);
 });
+
+materialForm.addEventListener("click", async (e) => {
+  // e.preventDefault();
+  console.log("fffffff---->>>", e.target.id);
+  const materialId = e.target.id;
+
+  const response = await fetch("/", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ materialId }),
+  });
+
+  const dataFromServer = await response.json();
+  // console.log('dataFromServer-----UUUUU------>>>', dataFromServer);
+  totalPrice.innerHTML = "";
+  price += dataFromServer;
+  totalPrice.insertAdjacentHTML("beforeend", `${price}`);
+  console.log("TOTAAAAAALLLLL---->>>", price);
+});
+
+// materialForm.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+//   console.log("FFFFFF--->>>>", e.target);
+
+// });
 
 // select.addEventListener("change", async (event) => {
 //   const color = event.target.value;
