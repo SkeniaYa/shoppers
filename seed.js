@@ -174,25 +174,25 @@ const materials = [
     name: "Кожа",
     description: "нетканый материал",
     price: 4,
-    image: "/image-material/Кожа.jpeg",
+    image: "/image-material/Кожа.jpg",
   },
   {
     name: "Латекс",
     description: "блестящий материал",
     price: 5,
-    image: "/image-material/Латекс.jpeg",
+    image: "/image-material/Латекс.jpg",
   },
   {
     name: "Хлопок",
     description: "натуральный материал",
     price: 6,
-    image: "/image-material/Хлопок.jpeg",
+    image: "/image-material/Хлопок.jpg",
   },
   {
     name: "Бархат",
     description: "мягкий материал",
     price: 7,
-    image: "/image-material/Бархат.jpeg",
+    image: "/image-material/Бархат.jpg",
   },
 ];
 async function seed() {

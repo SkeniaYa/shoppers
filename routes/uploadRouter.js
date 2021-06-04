@@ -6,8 +6,7 @@ router.get("/", (req, res) => {
   res.render("upload");
 });
 
-
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   if (req.files) {
     const { image } = req.files
     const newPath = path.join(__dirname, '..', 'public', 'downloadImg', image.name)
