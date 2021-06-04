@@ -23,8 +23,9 @@ const stage = new Konva.Stage({
 
 const layer = new Konva.Layer();
 stage.add(layer);
-console.log(select);
+// console.log(select);
 select.addEventListener("change", async (event) => {
+  console.log(event.target.value);
   const color = event.target.value;
   // const collection = "BagColor";
   const modelName = mainImg.firstChild.className;
@@ -38,20 +39,23 @@ select.addEventListener("change", async (event) => {
   });
 
   const newItem = await response.json();
-  // console.log(newItem);
+  console.log(newItem);
   const img = document.createElement("img");
   img.src = newItem.image;
   img.classList.add(modelName);
-  // console.log(img);
+  img.id = "delImg";
 
-  mainImg.innerText = "";
-  mainImg.appendChild(img);
-  mainImg.insertAdjacentHTML(
-    "beforeend",
-    `<div class="forUploading">
-      <div id="container"></div>
-    </div>`
-  );
+  mainImg.removeChild(delImg);
+
+  // mainImg.innerText = "";
+  mainImg.prepend(img);
+
+  // mainImg.insertAdjacentHTML(
+  //   "beforeend",
+  //   `<div class="forUploading">
+  //     <div id="container"></div>
+  //   </div>`
+  // );
 });
 
 constructorPart.addEventListener("change", async (e) => {
@@ -76,7 +80,6 @@ constructorPart.addEventListener("change", async (e) => {
 
 materialForm.addEventListener("click", async (e) => {
   // e.preventDefault();
-  console.log("fffffff---->>>", e.target.id);
   const materialId = e.target.id;
 
   const response = await fetch("/", {
@@ -88,28 +91,30 @@ materialForm.addEventListener("click", async (e) => {
   });
 
   const dataFromServer = await response.json();
-  // console.log('dataFromServer-----UUUUU------>>>', dataFromServer);
+
   totalPrice.innerHTML = "";
   price += dataFromServer;
   totalPrice.insertAdjacentHTML("beforeend", `${price}`);
-  console.log("TOTAAAAAALLLLL---->>>", price);
 });
 
 imgContainer.addEventListener("click", (e) => {
   if (e.target.tagName === "IMG") {
-    // console.log(e.target);
-    mainImg.innerText = "";
+    // console.log(e.target.tagName);
+    // const delImg = document.querySelector();
+    mainImg.removeChild(delImg);
+    // mainImg.innerText = "";
     const html = document.createElement("img");
     html.src = e.target.src;
+    html.id = "delImg";
     html.classList.add(e.target.className);
-    // console.log(e.target.className);
-    mainImg.appendChild(html);
-    mainImg.insertAdjacentHTML(
-      "beforeend",
-      `<div class="forUploading">
-        <div id="container"></div>
-      </div>`
-    );
+
+    mainImg.prepend(html);
+    // mainImg.insertAdjacentHTML(
+    //   "beforeend",
+    //   `<div class="forUploading">
+    //     <div id="container"></div>
+    //   </div>`
+    // );
   }
 });
 
@@ -133,16 +138,17 @@ downloadImgForm.addEventListener("submit", async (e) => {
 
   const formData = new FormData();
   formData.append("file", e.target.image.files[0]);
-  // console.log(e.target.image.files[0]);
+
   const response = await fetch("/", {
     method: "POST",
     body: formData,
   });
+
   e.target.image.value = "";
 
   const newItem = await response.json();
-
-  if (newItem) {
+  // console.log(!!newItem);
+  if (!!newItem) {
     function drawImage(imageObj) {
       var darthVaderImg = new Konva.Image({
         image: imageObj,
@@ -188,7 +194,6 @@ downloadImgForm.addEventListener("submit", async (e) => {
 
 containerAddConva.addEventListener("click", async (e) => {
   if (e.target.className === "form-input-params addText") {
-    console.log(e.target.className);
     const text1 = new Konva.Text({
       x: 10,
       y: 70,
@@ -207,7 +212,3 @@ containerAddConva.addEventListener("click", async (e) => {
   }
   inputText.value = "";
 });
-
-// container.addEventListener("click", (e) => {
-//   console.log(e.target);
-// });

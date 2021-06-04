@@ -30,19 +30,28 @@ select {
   margin: 0 -20px;
   margin-bottom: 15px;
 }
+.total{
+  display: flex;
+}
 .image {
   width: 33.3333333%;
   padding: 0 20px;
+  transition: 0.3s;
+}
+.image:hover {
+  opacity: 50%;
+  cursor: pointer;
+  box
 }
 .image img {
   display: block;
   width: 100%;
   height: 100px;
+  transition: 0.3s;
+  box-shadow: 0 0 3px;
+  border-radius: 5px;
 }
-.image:hover {
-  opacity: 50%;
-  cursor: pointer;
-}
+
 .title {
   margin-bottom: 15px;
 }
