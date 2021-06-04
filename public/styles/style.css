@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
 .mainImg img {
   display: block;
   width: 100%;
@@ -73,15 +80,25 @@ select {
 /* upload */
 .mainImg {
   position: relative;
+  width: 360px;
+  height: 405px;
 }
+
+.mainImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .forUploading {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 40%;
+  left: 49%;
   transform: translate(-50%);
-  background-color: red;
-  width: 200px;
-  height: 80px;
+  /* background-color: red; */
+  width: 170px;
+  height: 200px;
+  overflow: hidden;
 }
 .aboutMaterial {
  

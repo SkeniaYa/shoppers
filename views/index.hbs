@@ -1,8 +1,8 @@
 <div class="row justify-content-around">
   <div class="col-4">
     <div class="mainImg" id="mainImg">
-      <img src="/image-bags/Model3-Beige.JPG" alt="" />
-      <div class="forUploading">
+      <img src="/image-bags/Model3-Beige.JPG" alt="Model3" class="Model3"/>
+      <div class="forUploading" id="forUploading">
         {{#if image}}
               <div class="wrapper-img-domnload">
                   <img class="image-download" src="downloadImg/{{image}}" alt="" class="img-download">
@@ -23,13 +23,13 @@
     <div class="title">Выберите модель</div>
     <div class="wrapper-images">
       <div id="Model1" class="image">
-        <img src="/image-bags/Model1_Beige.JPG" alt="Model1" />
+        <img src="/image-bags/Model1_Beige.JPG" alt="Model1" class="Model1"/>
       </div>
       <div id="Model2" class="image">
-        <img src="/image-bags/Model2-Beige.JPG" alt="Model2" />
+        <img src="/image-bags/Model2-Beige.JPG" alt="Model2" class="Model2"/>
       </div>
       <div id="Model3" class="image">
-        <img src="/image-bags/Model3-Beige.JPG" alt="Model3" />
+        <img src="/image-bags/Model3-Beige.JPG" alt="Model3" class="Model3"/>
       </div>
     </div>
     <div class="title">Выберите цвет</div>
@@ -59,27 +59,15 @@
           <input type="radio" />
         </label>
 
-        {{!-- <label for="material1" class="material__radio">
-          <input
-            type="radio"
-            class="material__target"
-            id="material1"
-            name="material"
-          />
-          <div
-            class="materialr__label"
-            data-title="{{this.name}}"
-            style="background-image: url('{{this.image}}');"
-          ></div>
-        </label> --}}
-
       {{/each}}
     </form>
-    <div class="col-4 block-dowmload-img">
+    <div class="col-4 block-dowmload-img" id="containerAddConva">
+      <input id="addTxt" type="text">
+      <button class="addText" id="addText" type="button">Добавить текст</button>
     <div class="wrapper-form">
         <h2 class="title-upload">Загрузка изображения</h2>
         
-        <form method="POST" action="/" class="form-params-upload" enctype="multipart/form-data">
+        <form method="POST" class="form-params-upload" enctype="multipart/form-data" name="downloadImg">
             <input data type="file" name="image" class="form-input-params">
             <input type="submit" value="download img" class="form-input-params">
         </form>
