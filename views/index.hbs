@@ -4,12 +4,12 @@
       <img src="/image-bags/Model3-Beige.JPG" alt="" />
       <div class="forUploading">
         {{#if image}}
-              <div class="wrapper-img-domnload">
-                  <img class="image-download" src="downloadImg/{{image}}" alt="" class="img-download">
-              </div>
-          {{/if}}
+        <div class="wrapper-img-domnload">
+          <img class="image-download" src="downloadImg/{{image}}" alt="" class="img-download">
+        </div>
+        {{/if}}
         <div id="container">
-          
+
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="title">Выберите цвет</div>
     <select name="selectColor" id="selectColor">
       {{#each uniqueColors}}
-        <option value="{{this}}">{{this}}</option>
+      <option value="{{this}}">{{this}}</option>
       {{/each}}
       {{! <option value="White">White</option>
       <option value="Black">Black</option>
@@ -47,48 +47,41 @@
     <div class="title">Выберите размер</div>
     <select name="selectSize" id="selectSize">
       {{#each uniqueSizes}}
-        <option value="{{this}}">{{this}}</option>
+      <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
     <div class="title">Выберите материал</div>
-    <form name="materials" method="POST" class="materials" action="">
+    <form name='materials' method="POST" class="materials" action="">
       {{#each materialsFromDB}}
-        <label for={{this.name}}>
-          <div class="aboutMaterial">
-            <b>{{this.name}}</b><br>
-           <span>{{this.description}}</span> <br>
-           <img class="imgMaterial" src="{{this.image}}" alt="{{this.name}}" />
+      <label for={{this.name}}>
+        <div class="aboutMaterial">
+          <b>{{this.name}}</b>
+          <span>{{this.description}}</span>
+          <div class="wrapper-choice-fabric">
+            <img class="imgMaterial" src="{{this.image}}" alt="{{this.name}}" />
+            <input class="choice-fabric-radio" name="material" id={{this.name}} type="radio" />
           </div>
-          <input name="material" id={{this.name}} type="radio" />
-        </label>
+        </div>
+      </label>
 
-        {{!-- <label for="material1" class="material__radio">
-          <input
-            type="radio"
-            class="material__target"
-            id="material1"
-            name="material"
-          />
-          <div
-            class="materialr__label"
-            data-title="{{this.name}}"
-            style="background-image: url('{{this.image}}');"
-          ></div>
-        </label> --}}
+      {{!-- <label for="material1" class="material__radio">
+        <input type="radio" class="material__target" id="material1" name="material" />
+        <div class="materialr__label" data-title="{{this.name}}" style="background-image: url('{{this.image}}');"></div>
+      </label> --}}
 
       {{/each}}
     </form>
     <div class="block-dowmload-img">
-    <div class="wrapper-form">
-        <h2 class="title-upload">Загрузка изображения и текста</h2>        
+      <div class="wrapper-form">
+        <h2 class="title-upload">Загрузка изображения и текста</h2>
         <form method="POST" action="/" class="form-params-upload" enctype="multipart/form-data">
-            <input data type="file" name="image" class="form-input-params">
-            <input type="submit" value="download img" class="form-input-params">                         
-            <input type="submit" value="download text" class="form-input-params">
-        </form>  
-            <a class="btn btn-warning" href="/order">оформить заказ</a>      
-    </div>    
+          <input data type="file" name="image" class="form-input-params">
+          <input type="submit" value="download img" class="form-input-params">
+          <input type="submit" value="download text" class="form-input-params">
+        </form>
+        <a class="btn btn-warning" href="/order">оформить заказ</a>
+      </div>
+    </div>
   </div>
 </div>
-  </div>
 </div>
