@@ -5,6 +5,8 @@ const container = document.querySelector("#container");
 const select = document.querySelector("#selectColor");
 const imgContainer = document.querySelector(".wrapper-images");
 const mainImg = document.querySelector("#mainImg");
+const totalPrice = document.querySelector(".totalPrice");
+const constructorPart = document.querySelector("#constructorPart");
 
 const stage = new Konva.Stage({
   container: "container",
@@ -78,22 +80,62 @@ stage.add(layer);
 //     imageObj.src = "/";
 //   }
 // });
+let price = 0;
+totalPrice.insertAdjacentHTML("beforeend", `${price}`);
 
-select.addEventListener("change", async (event) => {
-  const color = event.target.value;
-  const collection = "BagColor";
-  const modelName = "model 1";
+constructorPart.addEventListener("change", async (e) => {
+  // console.log("e.target.id--->>>", e.target.id);
+  // console.log("selectSize==>", sizeSelect);
+  // console.log("selectSize.value==>", sizeSelect.value);
+
+  const selectId = e.target.id;
+  const colorOrSize = e.target.value;
+  // const size = sizeSelect.value;
+  const modelName = "Model1";
+  console.log("e.target--->>>", e.target);
+  console.log("selectId--->>>", selectId);
+  console.log("colorOrSize--->>>", colorOrSize);
 
   const response = await fetch("/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ color, collection, modelName }),
+    body: JSON.stringify({ selectId, colorOrSize, modelName }),
   });
 
   const newItem = await response.json();
+  console.log("newItem--->>>", newItem);
+
+  totalPrice.innerHTML = "";
+  price += newItem.price;
+  totalPrice.insertAdjacentHTML("beforeend", `${price}`);
+  // console.log("price--->>>>", price);
 });
+
+// select.addEventListener("change", async (event) => {
+//   const color = event.target.value;
+//   const collection = "BagColor";
+//   const modelName = "Model1";
+
+//   const response = await fetch("/", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ color, collection, modelName }),
+//   });
+
+//   const newItem = await response.json();
+//   console.log("newItem--->>>", newItem);
+//   // const newHTML =
+//   totalPrice.innerHTML = "";
+//   price += newItem.price;
+//   totalPrice.insertAdjacentHTML("beforeend", `${price}`);
+//   // console.log("price--->>>>", price);
+// });
+
+console.log("price--->>>>", price);
 
 imgContainer.addEventListener("click", (e) => {
   if (e.target.tagName === "IMG") {

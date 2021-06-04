@@ -13,12 +13,15 @@
         </div>
       </div>
     </div>
-    <div class="totalPrice">
+    <div class="total">
       <h2>Стоимость:</h2>
+      <div class="totalPrice">
+
+      </div>
     </div>
   </div>
 
-  <div class="col-4">
+  <div id="constructorPart" class="col-4">
     <h2>Конструктор</h2>
     <div class="title">Выберите модель</div>
     <div class="wrapper-images">
@@ -44,7 +47,7 @@
     <div class="title">Выберите размер</div>
     <select name="selectSize" id="selectSize">
       {{#each uniqueSizes}}
-        <option value="">{{this}}</option>
+        <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
     <div class="title">Выберите материал</div>
@@ -54,7 +57,7 @@
           <div class="aboutMaterial">
             <b>{{this.name}}</b><br>
            <span>{{this.description}}</span> <br>
-           <img class="imgMaterial" src="/image-material/Бархат.JPG" alt="{{this.name}}" />
+           <img class="imgMaterial" src="{{this.image}}" alt="{{this.name}}" />
           </div>
           <input name="material" id={{this.name}} type="radio" />
         </label>

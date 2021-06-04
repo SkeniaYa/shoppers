@@ -28,7 +28,28 @@ router.get("/", async (req, res) => {
   res.render("index", { uniqueSizes, uniqueColors, materialsFromDB });
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
+  console.log("req.body--->>>", req.body);
+  const { color, modelName, selectId, size } = req.body;
+  console.log("selectId--->>>", selectId);
+  let foundInBagColor;
+  let foundInBagSize;
+  if (selectId === "selectColor") {
+    foundInBagColor = await BagColor.findOne({ title: modelName, color });
+  }
+  if (selectId === "selectSize") {
+    foundInBagSize = await BagSize.findOne({ bagModel: modelName });
+  }
+  // const data = {
+  //   sizePrice: foundInBagSize.price,
+  // };
+  // console.log(data);
+  console.log("selectId--->>>", selectId);
+
+  console.log("test--->>>", foundInBagSize.price);
+  console.log("foundInBagColor--->>>", foundInBagColor);
+  res.json(foundInBagColor);
+
   if (req.files) {
     const { image } = req.files;
     const path =
@@ -37,19 +58,21 @@ router.post("/", (req, res) => {
       return res.render("index", { image: image.name });
     });
   } else {
-    res.render("index");
+    return res.render("index");
   }
 });
 
 // router.post("/", async (req, res) => {
-//   // const { color, collection, modelName } = req.body;
-//   console.log(req.body);
-//   // const test = await collection.find({ title: modelName, color });
+//   const { color, collection, modelName } = req.body;
+//   console.log('req.body--->>>', req.body);
+//   // console.log(req.body);
+//   const test = await collection.find({ title: modelName, color });
 //   // console.log(test);
 // });
-// router.get("/help", (req, res) => {
-//   res.render("help");
-// });
+
+router.get("/help", (req, res) => {
+  res.render("help");
+});
 
 router.get("/thankyou", (req, res) => {
   res.render("done");
