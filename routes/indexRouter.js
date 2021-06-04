@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
       return res.json(foundInBagSize.price);
     }
   }
-  console.log("11111111", req.body);
+
   if (req.body.color) {
     const { color, modelName } = req.body;
     console.log("color", color);
