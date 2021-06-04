@@ -22,8 +22,6 @@ hbs.registerPartials(path.join(__dirname, "views", "partials"));
 // подключение routers
 app.use("/", indexRouter);
 app.use("/upload", uploadRouter);
-
-
 app.use("/cart", cartRouter);
 
 // подключение routers
