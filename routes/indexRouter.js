@@ -1,11 +1,12 @@
-const { Router } = require("express");
-const bagColor = require("../models/bagColor");
-const router = Router();
-const BagColor = require("../models/bagColor");
-const BagSize = require("../models/bagSize");
-const Material = require("../models/material");
+const { Router } = require('express');
+const bagColor = require('../models/bagColor');
 
-router.get("/", async (req, res) => {
+const router = Router();
+const BagColor = require('../models/bagColor');
+const BagSize = require('../models/bagSize');
+const Material = require('../models/material');
+
+router.get('/', async (req, res) => {
   const sizesFromDB = await BagSize.find();
   const colorsFromDB = await BagColor.find();
   const materialsFromDB = await Material.find();
@@ -24,23 +25,23 @@ router.get("/", async (req, res) => {
     }
   }
 
-  res.render("index", { uniqueSizes, uniqueColors, materialsFromDB });
+  res.render('index', { uniqueSizes, uniqueColors, materialsFromDB });
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   if (req.body.selectId) {
     const { selectId, colorOrSize, modelName } = req.body;
-    console.log("selectId--->>>", selectId);
+
     let foundInBagColor;
     let foundInBagSize;
-    if (selectId === "selectColor") {
+    if (selectId === 'selectColor') {
       foundInBagColor = await BagColor.findOne({
         title: modelName,
         color: colorOrSize,
       });
       return res.json(foundInBagColor.price);
     }
-    if (selectId === "selectSize") {
+    if (selectId === 'selectSize') {
       foundInBagSize = await BagSize.findOne({ bagModel: modelName });
       return res.json(foundInBagSize.price);
     }
@@ -48,9 +49,8 @@ router.post("/", async (req, res) => {
 
   if (req.body.color) {
     const { color, modelName } = req.body;
-    console.log("color", color);
-    console.log(modelName);
-    const test = await BagColor.findOne({ color: color, title: modelName });
+
+    const test = await BagColor.findOne({ color, title: modelName });
 
     res.json(test);
   }
@@ -58,33 +58,40 @@ router.post("/", async (req, res) => {
   if (req.files) {
     const { file } = req.files;
 
-    const path =
-      __dirname.replace("routes", "") + `/public/downloadImg/${file.name}`;
+    const path = `${__dirname.replace('routes', '')}/public/downloadImg/${file.name}`;
     file.mv(path, (err) => {
       res.json({ image: file.name });
     });
   }
 });
 
-router.patch("/", async (req, res) => {
+router.patch('/', async (req, res) => {
   const foundInMaterials = await Material.findOne({
     name: req.body.materialId,
   });
   res.json(foundInMaterials.price);
 });
 
-router.get("/help", (req, res) => {
-  res.render("help");
+router.get('/help', (req, res) => {
+  res.render('help');
 });
 
-router.get("/thankyou", (req, res) => {
-  res.render("done");
+router.get('/contacts', (req, res) => {
+  res.render('contacts');
 });
-router.get("/helper", (req, res) => {
-  res.render("help");
+
+router.get('/conditions', (req, res) => {
+  res.render('conditions');
 });
-router.get("/order", (req, res) => {
-  res.render("customer");
+
+router.get('/thankyou', (req, res) => {
+  res.render('done');
+});
+router.get('/helper', (req, res) => {
+  res.render('help');
+});
+router.get('/order', (req, res) => {
+  res.render('customer');
 });
 
 module.exports = router;

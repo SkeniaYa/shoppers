@@ -1,5 +1,6 @@
-const width = window.innerWidth;
-const height = window.innerHeight;
+// const width = window.innerWidth;
+// const height = window.innerHeight;
+
 const container = document.querySelector("#container");
 const select = document.querySelector("#selectColor");
 const imgContainer = document.querySelector(".wrapper-images");
@@ -17,19 +18,18 @@ totalPrice.insertAdjacentHTML("beforeend", `${price}`);
 
 const stage = new Konva.Stage({
   container: "container",
-  width: width,
-  height: height,
+  width: 170,
+  height: 200,
 });
 
 const layer = new Konva.Layer();
 stage.add(layer);
-// console.log(select);
+
 select.addEventListener("change", async (event) => {
-  console.log(event.target.value);
   const color = event.target.value;
   // const collection = "BagColor";
   const modelName = mainImg.firstChild.className;
-  // console.log(modelName);
+
   const response = await fetch("/", {
     method: "POST",
     headers: {
@@ -39,7 +39,7 @@ select.addEventListener("change", async (event) => {
   });
 
   const newItem = await response.json();
-  console.log(newItem);
+
   const img = document.createElement("img");
   img.src = newItem.image;
   img.classList.add(modelName);
@@ -99,7 +99,6 @@ materialForm.addEventListener("click", async (e) => {
 
 imgContainer.addEventListener("click", (e) => {
   if (e.target.tagName === "IMG") {
-    // console.log(e.target.tagName);
     // const delImg = document.querySelector();
     mainImg.removeChild(delImg);
     // mainImg.innerText = "";
@@ -147,16 +146,15 @@ downloadImgForm.addEventListener("submit", async (e) => {
   e.target.image.value = "";
 
   const newItem = await response.json();
-  // console.log(!!newItem);
   if (!!newItem) {
     function drawImage(imageObj) {
       var darthVaderImg = new Konva.Image({
         image: imageObj,
-        x: stage.width() / 2 - 640,
-        y: stage.height() / 2 - 370,
+        x: stage.width() / 2 - 130 / 2,
+        y: stage.height() / 2 - 47 / 2,
         // x: stage.width() / 2 - 200 / 2,
         // y: stage.height() / 2 - 137 / 2,
-        width: 120,
+        width: 130,
         height: 87,
         draggable: true,
       });
@@ -192,11 +190,11 @@ downloadImgForm.addEventListener("submit", async (e) => {
   }
 });
 
-containerAddConva.addEventListener("click", async (e) => {
-  if (e.target.className === "form-input-params addText") {
+containerAddConva.addEventListener("click", (e) => {
+  if (e.target.className === "form-input-params addText hiden") {
     const text1 = new Konva.Text({
-      x: 10,
-      y: 70,
+      x: stage.width() / 2 - 30,
+      y: 40,
       fontSize: 30,
       text: `${inputText.value}`,
       draggable: true,
@@ -209,6 +207,6 @@ containerAddConva.addEventListener("click", async (e) => {
       enabledAnchors: ["top-left", "top-right", "bottom-left", "bottom-right"],
     });
     layer.add(tr1);
+    inputText.value = "";
   }
-  inputText.value = "";
 });

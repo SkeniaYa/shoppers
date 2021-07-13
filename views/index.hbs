@@ -19,9 +19,10 @@
 
       </div>
     </div>
+     <a class="glow-button" href="/order">оформить заказ</a> {{!-- btn btn-warning --}}
   </div>
 
-  <div id="constructorPart" class="col-4">
+  <div id="constructorPart" class="col-5">
     <h2>Конструктор</h2>
     <div class="title">Выберите модель</div>
     <div class="wrapper-images">
@@ -35,8 +36,8 @@
         <img src="/image-bags/Model3-Beige.JPG" alt="Model3" class="Model3"/>
       </div>
     </div>
-    <div class="title">Выберите цвет</div>
-    <select name="selectColor" id="selectColor">
+    <div class="title">
+      Выберите цвет <select name="selectColor" id="selectColor">
       {{#each uniqueColors}}
       <option value="{{this}}">{{this}}</option>
       {{/each}}
@@ -44,12 +45,16 @@
       <option value="Black">Black</option>
       <option value="Red">Red</option> }}
     </select>
-    <div class="title">Выберите размер</div>
-    <select name="selectSize" id="selectSize">
+      </div>
+    
+    <div class="title">
+      Выберите размер <select name="selectSize" id="selectSize">
       {{#each uniqueSizes}}
       <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
+      </div>
+    
     <div class="title">Выберите материал</div>
     <form name='materials' method="POST" class="materials" action="">
       {{#each materialsFromDB}}
@@ -68,14 +73,25 @@
     </form>
     <div class="block-dowmload-img" id="containerAddConva">
       <div class="wrapper-form">
-        <h2 class="title-upload">Загрузка изображения и текста</h2>
+        <h2 class="title-upload">Добавить картинку</h2>
         <form method="POST" name="downloadImg" class="form-params-upload" enctype="multipart/form-data">
-          <input data type="file" name="image" class="form-input-params">
-          <input type="submit" value="добавить изображение" class="form-input-params">
+          <label for="file-upload" class="sliding-button">
+            выберите файл
+          </label>
+           <input id="file-upload" data type="file" name="image" class="hiden"> {{!-- form-input-params --}}
+           <label for="add-file" class="sliding-button">
+            добавить
+          </label>
+          <input id="add-file" type="submit" value="добавить изображение" class="form-input-params hiden">
         </form>
+        {{!-- <h2 class="title-upload">Добавить текст</h2> --}}
+        <div class="addText">
         <input id="addTxt" type="text" placeholder="введите текст" class="form-input-params">
-        <input id="addText" type="button" value="добавить текст" class="form-input-params addText">
-        <a class="btn btn-warning" href="/order">оформить заказ</a>
+        <label for="addText" class="sliding-button">
+            добавить текст
+          </label>
+        <input id="addText" type="button" value="добавить текст" class="form-input-params addText hiden">
+        </div>
       </div>
     </div>
   </div>
